@@ -2,7 +2,7 @@
 
 set -e
 
-. conf/busybear.config
+. conf/riscv64.config
 
 #
 # test environment

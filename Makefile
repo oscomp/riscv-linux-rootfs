@@ -1,14 +1,17 @@
-all: busybear.bin
+all: riscv64-rootfs.bin
 
 clean:
-	rm -fr build busybear.bin
+	rm -fr build riscv64-rootfs.bin
 
 distclean: clean
 	rm -fr archives
 
-busybear.bin: scripts/build.sh
+riscv64-rootfs.bin: scripts/build.sh
 	./scripts/build.sh
 
+run: scripts/start-qemu.sh
+	./scripts/start-qemu.sh
+
 archive:
-	tar --exclude build --exclude archives --exclude busybear.bin \
-	    -C .. -cjf ../busybear-linux.tar.bz2 busybear-linux
+	tar --exclude build --exclude archives --exclude riscv64-rootfs.bin \
+	    -C .. -cjf ../riscv64-linux.tar.bz2 $(shell basename $(PWD))
