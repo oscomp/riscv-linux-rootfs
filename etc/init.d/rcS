@@ -6,7 +6,7 @@
 /bin/busybox --install -s
 mkdir -p /dev/pts
 mount -t devpts devpts /dev/pts
-ifup -a
+ifup -a -f
 
 for i in /etc/init.d/S??*
 do
