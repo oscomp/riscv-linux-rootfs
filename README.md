@@ -42,8 +42,7 @@ on the host and `192.168.100.2` in the guest.
 ## Build
 
 The build process downloads busybox and dropbear, compiles them and prepares
-a root filesystem image to the file `riscv64-rootfs.bin`. The build script needs
-to be run in Linux, even if preparing a root filesystem image for macOS.
+a root filesystem image to the file `riscv64-rootfs.bin`.
 
 ```
 export PATH=/path/to/your/riscv/toolchain:$PATH
