@@ -66,7 +66,7 @@ test -x build/busybox-${BUSYBOX_VERSION}/busybox || (
 test -x build/dropbear-${DROPBEAR_VERSION}/dropbear || (
     cd build/dropbear-${DROPBEAR_VERSION}
     ./configure --host=${CROSS_COMPILE%-} --disable-zlib
-    make -j$(nproc)
+    make -j$(nproc) PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
 )
 test -x build/linux-${LINUX_KERNEL_VERSION}/vmlinux || (
     cd build/linux-${LINUX_KERNEL_VERSION}
