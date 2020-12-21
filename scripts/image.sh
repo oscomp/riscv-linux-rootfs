@@ -63,6 +63,7 @@ copy_libs() {
     # copy busybox and dropbear
     cp build/busybox-${BUSYBOX_VERSION}/busybox mnt/bin/
     cp build/dropbear-${DROPBEAR_VERSION}/scp mnt/bin/
+    cp build/dropbear-${DROPBEAR_VERSION}/dbclient mnt/usr/bin/
     cp build/dropbear-${DROPBEAR_VERSION}/dropbear mnt/sbin/
 
     # copy libraries
