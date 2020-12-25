@@ -9,7 +9,7 @@ ssh access to a RISC-V virtual machine.
 
 ## Dependencies
 
-- [riscv-gnu-toolchain](https://github.com/riscv/riscv-gnu-toolchain) (RISC-V Linux toolchain)
+- [riscv-gnu-toolchain](https://github.com/riscv/riscv-gnu-toolchain) (RISC-V Linux toolchain, recommended with Linux-elf/glibc)
 - [busybox](https://busybox.net/) (downloaded automatically)
 - [dropbear](https://matt.ucc.asn.au/dropbear/dropbear.html) (downloaded automatically)
 - sudo, curl, openssl and rsync
