@@ -77,4 +77,5 @@ After booting the virtual machine you should be able to ssh into it.
 $ ssh root@192.168.100.2
 ```
 Through `scp`, Host and Qemu guest can transfer files.
-
+---
+OR Just use my [prebuilt](#)
