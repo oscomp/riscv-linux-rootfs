@@ -9,7 +9,7 @@ ssh access to a RISC-V virtual machine.
 
 ## Dependencies
 
-- [riscv-gnu-toolchain](https://github.com/riscv/riscv-gnu-toolchain) (RISC-V Linux toolchain)
+- [riscv-gnu-toolchain](https://github.com/riscv/riscv-gnu-toolchain) (RISC-V Linux toolchain, recommended with Linux-elf/glibc)
 - [busybox](https://busybox.net/) (downloaded automatically)
 - [dropbear](https://matt.ucc.asn.au/dropbear/dropbear.html) (downloaded automatically)
 - sudo, curl, openssl and rsync
@@ -77,4 +77,5 @@ After booting the virtual machine you should be able to ssh into it.
 $ ssh root@192.168.100.2
 ```
 Through `scp`, Host and Qemu guest can transfer files.
-
+---
+OR Just use my [prebuilt](#)
