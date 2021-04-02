@@ -79,3 +79,5 @@ $ ssh root@192.168.100.2
 Through `scp`, Host and Qemu guest can transfer files.
 ---
 OR Just use my [prebuilt](#)
+---
+* 分区/dev/vda2是fat32分区，挂载后可模拟比赛时的sdcard fat32
