@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 . conf/riscv64.config
 
@@ -32,7 +33,7 @@ fi
 # construct command
 cmd="${QEMU_SYSTEM_BIN} -nographic -machine virt \
 	-kernel build/riscv-pk/bbl \
-	-append \"root=/dev/vda ro console=ttyS0\" \
+	-append \"root=/dev/vda1 ro console=ttyS0\" \
 	-drive file=riscv64-rootfs.bin,format=raw,id=hd0 \
 	-device virtio-blk-device,drive=hd0 \
 	-netdev ${QEMU_NETDEV},id=net0 \

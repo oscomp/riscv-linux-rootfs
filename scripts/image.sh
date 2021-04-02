@@ -19,9 +19,37 @@ fi
 rm -f ${IMAGE_FILE}
 dd if=/dev/zero of=${IMAGE_FILE} bs=1M count=${IMAGE_SIZE}
 chown ${UID}:${GID} ${IMAGE_FILE}
-/sbin/mkfs.ext4 -j -F ${IMAGE_FILE}
+
+# 创建分区
+echo '
+o
+n
+p
+1
+
++200M
+
+n
+p
+2
+
+
+
+t
+2
+c
+p
+w
+' | fdisk ${IMAGE_FILE} && sudo losetup -P /dev/loop30 ${IMAGE_FILE} && sudo fdisk -l /dev/loop30
+sudo mkfs.ext4 -j -F /dev/loop30p1
+# /sbin/mkfs.ext4 -j -F ${IMAGE_FILE}
+
+# 模拟fat32格式的硬盘
+sudo mkfs.vfat -F 32 /dev/loop30p2
+
 test -d mnt || mkdir mnt
-mount -o loop ${IMAGE_FILE} mnt
+# mount -o loop ${IMAGE_FILE} mnt
+sudo mount /dev/loop30p1 mnt
 
 set +e
 
@@ -49,7 +77,7 @@ copy_libs() {
     set -e
 
     # create directories
-    for dir in root bin dev etc lib lib/modules proc sbin sys tmp \
+    for dir in root bin dev etc lib lib/modules proc sbin sys mnt tmp \
         usr usr/bin usr/sbin var var/run var/log var/tmp \
         etc/dropbear \
         etc/network/if-pre-up.d \
@@ -59,6 +87,8 @@ copy_libs() {
     do
         mkdir -p mnt/${dir}
     done
+
+    touch mnt/mnt/please_mount_vda2
 
     # copy busybox and dropbear
     cp build/busybox-${BUSYBOX_VERSION}/busybox mnt/bin/
@@ -110,5 +140,7 @@ fi
 #
 # finish
 #
-umount mnt
+sudo sync
+sudo umount mnt
+sudo losetup -d /dev/loop30
 rmdir mnt
